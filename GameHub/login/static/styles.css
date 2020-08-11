@@ -1,6 +1,6 @@
 
 body{
-    background-color: teal;
+    background-color: aqua;
     /*display: flex;*/
     /*justify-content: space-between;*/
 }
@@ -13,4 +13,5 @@ body{
 section{
     width: 50%;
     margin: 0 20px;
+    display: inline-block;
 }
