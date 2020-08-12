@@ -19,7 +19,7 @@ def create(request):
 
     new_user = User.objects.register(request.POST)
     request.session['user_id'] = new_user.id
-    return redirect('/success')
+    return redirect('/discuss')
 
 def login(request):
     result = User.objects.authenticate(request.POST['email'], request.POST['password'])
@@ -28,7 +28,7 @@ def login(request):
     else:
         user = User.objects.get(email=request.POST['email'])
         request.session['user_id'] = user.id
-        return redirect('/success')
+        return redirect('/discuss')
     return redirect('/')
 
 def success(request):
