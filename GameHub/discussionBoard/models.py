@@ -3,12 +3,6 @@ from login.models import User
 
 
 class PostManager(models.Manager):
-    def register(self, post_data):
-        return self.create(
-            title = post_data['title'],
-            content = post_data['content'],
-            #author = post_data['user_id'],
-        )
 
     def validate(self, post_data):
         errors = {}
