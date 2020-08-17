@@ -12,39 +12,18 @@
     <div class="header">
         <h1>GameHub</h1>
     </div>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %} 
     <section>
-        <h1>Registration</h1>
-        {% if messages %}
-        <ul class="messages">    
-            {% for message in messages %}    
-                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
-            {% endfor %}
-        </ul>
-        {% endif %}
-        <form action="/create" method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="first_name">First Name: </label>
-                <input type="text" name="first_name" id="first_name" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="last_name">Last Name: </label>
-                <input type="text" name="last_name" id="last_name" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="email">Email: </label>
-                <input type="email" name="email" id="email" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="password">Password: </label>
-                <input type="password" name="password" id="password" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="confirm">Confirm Password: </label>
-                <input type="password" name="confirm" id="confirm" class="form-control">
-            </div>
-            <button class="btn btn-primary">Register</button>
-        </form>
+        <h1>Welcome!</h1>
+        <p>Hello, and welcome to GameHub! This is the very first social media designed strictly for gamers! Please login or sign up to enjoy.</p>
+        <p>This site is built for people to discuss anything from their favorite game, mission, character, or design!</p>
+        <p>You can also connect with new friends and share gamertags to allow you to play together on some of your favorites!</p>
     </section>
     <section>
         <h1>Login</h1>
@@ -60,6 +39,7 @@
             </div>
             <button class="btn btn-primary">Log in</button>
         </form>
+        <p>Don't have an Account? Click <a href="/register">here</a> to create one!</p>
     </section>
 </body>
 </html>

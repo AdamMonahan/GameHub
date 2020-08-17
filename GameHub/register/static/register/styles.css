@@ -1,13 +1,6 @@
-
 body{
     background-color: gray;
 }
-
-.header{
-    display: block;
-    margin: 0 20px;
-}
-
 section{
     width: 590px;
     margin: 0 20px;
