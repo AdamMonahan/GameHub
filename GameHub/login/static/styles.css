@@ -1,8 +1,6 @@
 
 body{
-    background-color: aqua;
-    /*display: flex;*/
-    /*justify-content: space-between;*/
+    background-color: gray;
 }
 
 .header{
@@ -11,7 +9,8 @@ body{
 }
 
 section{
-    width: 50%;
+    width: 590px;
     margin: 0 20px;
     display: inline-block;
+    vertical-align: top;
 }

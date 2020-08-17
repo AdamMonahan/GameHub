@@ -9,41 +9,45 @@
     <title>Discussion Board</title>
 </head>
 <body>
-    <h1>Success! Welcome, {{ user.first_name}}! </h1>
-    <p>Successfully registered (or logged in)!</p>
+    <h1>GameHub</h1>
+    <div>
+        <h1>Hello, {{ user.first_name}}! </h1>
+        <a href="/logout">Log out</a>
+    </div>
     <h1>Discussion Board</h1>
-
-    {% if messages %}
+    <section>
+        {% if messages %}
         <ul class="messages">    
-            {% for message in messages %}    
-                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
-            {% endfor %}
+            {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
         </ul>
-    {% endif %}
+        {% endif %}
+        <form action="/discuss/create" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title: </label>
+                <input type="text" name="title" id="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="content">Content: </label>
+                <input type="text" name="content" id="content" class="form-control">
+            </div>
+            <button class="btn btn-primary">Post!</button>
+        </form>
+    </section>
+    <section>
 
-    <form action="/discuss/create" method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="title">Title: </label>
-            <input type="text" name="title" id="title" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="content">Content: </label>
-            <input type="text" name="content" id="content" class="form-control">
-        </div>
-        <button class="btn btn-primary">Post!</button>
-    </form>
-    {%for post in posts%}
+        {%for post in posts%}
         <div class="post">
             <h3>{{post.title}}</h3>
             <blockquote>{{post.content}}</blockquote>
             <p>{{post.author.first_name}} on {{post.created_at}}</p>
             {% if post.author.id == request.session.user_id %}
-                <a class="btn btn-danger" href="/discuss/{{post.id}}/delete">Delete</a>
+            <a class="btn btn-danger" href="/discuss/{{post.id}}/delete">Delete</a>
             {% endif %}
         </div>
-    {% endfor %}
-
-    <a href="/logout">Log out</a>
+        {% endfor %}
+    </section>
 </body>
 </html>
